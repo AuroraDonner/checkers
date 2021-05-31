@@ -15,6 +15,8 @@ namespace SpriteKind {
  * - Decide on checkers or a variation thereof (planes and ships or some other figures to allow changes in checker rules)
  * 
  * - Add text between turns?
+ * 
+ * - Optimize B button
  */
 function blinkAction () {
     if (team == 1) {
@@ -37,36 +39,124 @@ function blinkAction () {
         }
     }
 }
-// move token up and to the left
+// move token up and to the right
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += -10
     currentPiece.y += -10
+    move = 1
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (buttonBIndex == 0) {
-        if (team == -1) {
-            for (let value of player1Pieces) {
-                if (currentPiece.x == value.x && currentPiece.y == value.y) {
-                    value.setPosition(deleted1, 27)
-                    info.player1.changeLifeBy(-1)
-                    deleted1 += 5
-                }
-            }
-        } else if (team == 1) {
-            for (let value of player2Pieces) {
-                if (currentPiece.x == value.x && currentPiece.y == value.y) {
-                    value.setPosition(deleted2, 87)
-                    info.player2.changeLifeBy(-1)
-                    deleted2 += 5
+    blocked = false
+    if (team == -1) {
+        for (let value of player1Pieces) {
+            if (currentPiece.x == value.x && currentPiece.y == value.y) {
+                if (move == 1) {
+                    for (let value of player1Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete1()
+                        currentPiece.x += -10
+                        currentPiece.y += -10
+                        break;
+                    }
+                } else if (move == 2) {
+                    for (let value of player1Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete1()
+                        currentPiece.x += 10
+                        currentPiece.y += -10
+                        break;
+                    }
+                } else if (move == 3) {
+                    for (let value of player1Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete1()
+                        currentPiece.x += 10
+                        currentPiece.y += 10
+                        break;
+                    }
+                } else if (move == 4) {
+                    for (let value of player1Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete1()
+                        currentPiece.x += -10
+                        currentPiece.y += 10
+                        break;
+                    }
                 }
             }
         }
-        buttonBIndex = 1
-    } else if (buttonBIndex == 1) {
-        switchPlayers()
-        team = team * -1
-        buttonBIndex = 0
+    } else if (team == 1) {
+        for (let value of player2Pieces) {
+            if (currentPiece.x == value.x && currentPiece.y == value.y) {
+                if (move == 1) {
+                    for (let value of player2Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete2()
+                        currentPiece.x += -10
+                        currentPiece.y += -10
+                        break;
+                    }
+                } else if (move == 2) {
+                    for (let value of player2Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete2()
+                        currentPiece.x += 10
+                        currentPiece.y += -10
+                        break;
+                    }
+                } else if (move == 3) {
+                    for (let value of player2Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete2()
+                        currentPiece.x += 10
+                        currentPiece.y += 10
+                        break;
+                    }
+                } else if (move == 4) {
+                    for (let value of player2Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    if (!(blocked)) {
+                        delete2()
+                        currentPiece.x += -10
+                        currentPiece.y += 10
+                        break;
+                    }
+                }
+            }
+        }
     }
+    switchPlayers()
 })
 function resetSprites () {
     player11.destroy()
@@ -190,16 +280,40 @@ function setUpPlayer1 () {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += -10
     currentPiece.y += 10
+    move = 4
 })
 // move token up and to the right
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += 10
     currentPiece.y += -10
+    move = 2
 })
+function delete1 () {
+    for (let value of player1Pieces) {
+        if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted1, 37)
+            info.player1.changeLifeBy(-1)
+            deleted1 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted1, 37)
+            info.player1.changeLifeBy(-1)
+            deleted1 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted1, 37)
+            info.player1.changeLifeBy(-1)
+            deleted1 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted1, 37)
+            info.player1.changeLifeBy(-1)
+            deleted1 += 5
+        }
+    }
+}
 // move token down and to the right
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += 10
     currentPiece.y += 10
+    move = 3
 })
 info.player1.onLifeZero(function () {
     game.splash("Purple Wins!", "Press A to reset")
@@ -211,6 +325,27 @@ info.player2.onLifeZero(function () {
     resetSprites()
     start()
 })
+function delete2 () {
+    for (let value of player2Pieces) {
+        if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted2, 87)
+            info.player1.changeLifeBy(-1)
+            deleted2 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted2, 87)
+            info.player1.changeLifeBy(-1)
+            deleted2 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted2, 87)
+            info.player1.changeLifeBy(-1)
+            deleted2 += 5
+        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
+            value.setPosition(deleted2, 87)
+            info.player1.changeLifeBy(-1)
+            deleted2 += 5
+        }
+    }
+}
 function start () {
     scene.setBackgroundImage(assets.image`checkerBoard`)
     setUpPlayer1()
@@ -280,7 +415,11 @@ function switchPlayers () {
     } else if (playerIndex >= 12) {
         playerIndex = 0
     }
+    team = team * -1
 }
+let buttonBIndex = 0
+let deleted2 = 0
+let deleted1 = 0
 let playerIndex = 0
 let player212: Sprite = null
 let player211: Sprite = null
@@ -306,9 +445,8 @@ let player14: Sprite = null
 let player13: Sprite = null
 let player12: Sprite = null
 let player11: Sprite = null
-let deleted2 = 0
-let deleted1 = 0
-let buttonBIndex = 0
+let blocked = false
+let move = 0
 let player2Pieces: Sprite[] = []
 let currentPiece: Sprite = null
 let player1Pieces: Sprite[] = []
