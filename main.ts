@@ -5,18 +5,6 @@ namespace SpriteKind {
  * Next Steps:
  * 
  * - Add sound effects ("step") on movement of pieces
- * 
- * - Possibly add auto jump feature after capturing piece
- * 
- * - Possibly add kinged pieces, or just make the game omni-directional checkers
- * 
- * - Add opening text and instructions/rules
- * 
- * - Decide on checkers or a variation thereof (planes and ships or some other figures to allow changes in checker rules)
- * 
- * - Add text between turns?
- * 
- * - Optimize B button
  */
 function blinkAction () {
     if (team == 1) {
@@ -43,6 +31,7 @@ function blinkAction () {
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += -10
     currentPiece.y += -10
+    music.footstep.play()
     move = 1
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -56,14 +45,26 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                             blocked = true
                         }
                     }
+                    for (let value of player2Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
                     if (!(blocked)) {
                         delete1()
                         currentPiece.x += -10
                         currentPiece.y += -10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += 10
+                        currentPiece.y += 10
                     }
                 } else if (move == 2) {
                     for (let value of player1Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player2Pieces) {
                         if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
                             blocked = true
                         }
@@ -72,10 +73,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete1()
                         currentPiece.x += 10
                         currentPiece.y += -10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += -10
+                        currentPiece.y += 10
                     }
                 } else if (move == 3) {
                     for (let value of player1Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player2Pieces) {
                         if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
                             blocked = true
                         }
@@ -84,10 +92,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete1()
                         currentPiece.x += 10
                         currentPiece.y += 10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += -10
+                        currentPiece.y += -10
                     }
                 } else if (move == 4) {
                     for (let value of player1Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player2Pieces) {
                         if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
                             blocked = true
                         }
@@ -96,7 +111,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete1()
                         currentPiece.x += -10
                         currentPiece.y += 10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += 10
+                        currentPiece.y += -10
                     }
                 }
             }
@@ -110,14 +127,26 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                             blocked = true
                         }
                     }
+                    for (let value of player1Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
                     if (!(blocked)) {
                         delete2()
                         currentPiece.x += -10
                         currentPiece.y += -10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += 10
+                        currentPiece.y += 10
                     }
                 } else if (move == 2) {
                     for (let value of player2Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player1Pieces) {
                         if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
                             blocked = true
                         }
@@ -126,10 +155,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete2()
                         currentPiece.x += 10
                         currentPiece.y += -10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += -10
+                        currentPiece.y += 10
                     }
                 } else if (move == 3) {
                     for (let value of player2Pieces) {
+                        if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player1Pieces) {
                         if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
                             blocked = true
                         }
@@ -138,10 +174,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete2()
                         currentPiece.x += 10
                         currentPiece.y += 10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += -10
+                        currentPiece.y += -10
                     }
                 } else if (move == 4) {
                     for (let value of player2Pieces) {
+                        if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                            blocked = true
+                        }
+                    }
+                    for (let value of player1Pieces) {
                         if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
                             blocked = true
                         }
@@ -150,12 +193,15 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                         delete2()
                         currentPiece.x += -10
                         currentPiece.y += 10
-                        break;
+                    } else if (blocked) {
+                        currentPiece.x += 10
+                        currentPiece.y += -10
                     }
                 }
             }
         }
     }
+    music.footstep.play()
     switchPlayers()
 })
 function resetSprites () {
@@ -186,6 +232,7 @@ function resetSprites () {
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     playerIndex += 1
+    music.footstep.play()
     if (team == 1) {
         // return to beginning of rotation for player 1
         if (playerIndex == 12) {
@@ -280,12 +327,14 @@ function setUpPlayer1 () {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += -10
     currentPiece.y += 10
+    music.footstep.play()
     move = 4
 })
 // move token up and to the right
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += 10
     currentPiece.y += -10
+    music.footstep.play()
     move = 2
 })
 function delete1 () {
@@ -313,15 +362,23 @@ function delete1 () {
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     currentPiece.x += 10
     currentPiece.y += 10
+    music.footstep.play()
     move = 3
 })
+controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
+    game.showLongText("UP: Top-Left            RIGHT: Top-Right          DOWN: Bottom-Right LEFT: Bottom-Left", DialogLayout.Bottom)
+    game.showLongText("A Button: Cycle through pieces (active is blinking blue)", DialogLayout.Bottom)
+    game.showLongText("B Button: Switch players (if on/under other token, will attempt to take piece and jump; if not possible, will send token back to start of turn and switch player)", DialogLayout.Bottom)
+})
 info.player1.onLifeZero(function () {
-    game.splash("Purple Wins!", "Press A to reset")
+    game.splash("Player 2 Wins!", "Press A to reset")
+    effects.confetti.startScreenEffect(2000)
     resetSprites()
     start()
 })
 info.player2.onLifeZero(function () {
-    game.splash("White Wins!", "Press A to reset")
+    game.splash("Player 1 Wins!", "Press A to reset")
+    effects.confetti.startScreenEffect(2000)
     resetSprites()
     start()
 })
@@ -357,6 +414,13 @@ function start () {
     deleted2 = 10
     info.player1.setLife(12)
     info.player2.setLife(12)
+    game.splash("TOKENS!", "The New Checkers")
+    game.splash("Rules:", "(press menu for help)")
+    game.showLongText("This is a game similar to checkers, player 1 (beige) will start the game by moving their piece diagonally. Unlike checkers, \"Tokens\" does not require your pieces to go only forward until \"kinged\" - you can move your tokens in any direction.", DialogLayout.Full)
+    game.showLongText("Like checkers, your pieces will move diagonally on the black squares; on your turn this will be completed using the directional arrows (press menu when in the game to review directions and button functions).", DialogLayout.Full)
+    game.showLongText("Pressing the A button will allow you to cycle through your pieces; don't worry if you went past your desired token, you can always loop back. When you have finished moving your piece one (1) square diagonally, press the B button to switch players.", DialogLayout.Full)
+    game.showLongText("If you wish to capture another players' token, move your piece to the same square as the desired token, and provided there is an empty space behind it, you will take the piece (seen on the side) and jump one more space when B is pressed.", DialogLayout.Full)
+    game.showLongText("Watch out though, if you try to jump over a token when there is no empty space behind, you will be sent back to your original spot and will forfeit your turn. Once one player has captured all of their opponents pieces, they have won the game.", DialogLayout.Full)
 }
 function pieceSelect () {
     if (playerIndex == 0) {
