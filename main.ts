@@ -1,11 +1,6 @@
 namespace SpriteKind {
     export const stationary = SpriteKind.create()
 }
-/**
- * Next Steps:
- * 
- * - Add sound effects ("step") on movement of pieces
- */
 function blinkAction () {
     if (team == 1) {
         for (let value of player1Pieces) {
@@ -26,6 +21,70 @@ function blinkAction () {
             }
         }
     }
+}
+function Town_Hall () {
+    pause(2000)
+    music.setVolume(25)
+    music.setTempo(90)
+    music.playTone(233.08, music.beat(BeatFraction.Whole))
+    music.playTone(233.08, music.beat(BeatFraction.Half))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(349.23, music.beat(BeatFraction.Half))
+    music.playTone(311.13, music.beat(BeatFraction.Half))
+    music.playTone(293.66, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Half))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(311.13, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(311.13, music.beat(BeatFraction.Half))
+    music.playTone(349.23, music.beat(BeatFraction.Double))
+    music.playTone(293.66, music.beat(BeatFraction.Whole))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(466.16, music.beat(BeatFraction.Whole))
+    music.playTone(587.33, music.beat(BeatFraction.Whole))
+    music.playTone(587.33, music.beat(BeatFraction.Half))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(466.16, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(466.16, music.beat(BeatFraction.Whole))
+    music.playTone(329.63, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(349.23, music.beat(BeatFraction.Half))
+    music.playTone(349.23, music.beat(BeatFraction.Double))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(415.30, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(311.13, music.beat(BeatFraction.Half))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(311.13, music.beat(BeatFraction.Whole))
+    music.playTone(349.23, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Half))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(311.13, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Whole))
+    music.playTone(293.66, music.beat(BeatFraction.Half))
+    music.playTone(261.63, music.beat(BeatFraction.Half))
+    music.playTone(233.08, music.beat(BeatFraction.Whole))
+    music.playTone(261.63, music.beat(BeatFraction.Whole))
+    music.playTone(233.08, music.beat(BeatFraction.Whole))
+    music.playTone(220, music.beat(BeatFraction.Whole))
+    music.playTone(233.08, music.beat(BeatFraction.Breve))
+    pause(2000)
+    song = 0
 }
 // move token up and to the right
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -230,6 +289,46 @@ function resetSprites () {
     player211.destroy()
     player212.destroy()
 }
+function Fallen_Down () {
+    pause(4000)
+    music.setVolume(15)
+    music.setTempo(110)
+    for (let index = 0; index < 6; index++) {
+        music.playTone(739.99, music.beat(BeatFraction.Half))
+        music.playTone(554.37, music.beat(BeatFraction.Half))
+    }
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(554.37, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    music.playTone(659.25, music.beat(BeatFraction.Half))
+    music.playTone(622.25, music.beat(BeatFraction.Half))
+    music.playTone(659.25, music.beat(BeatFraction.Half))
+    music.playTone(739.99, music.beat(BeatFraction.Half))
+    music.playTone(622.25, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    for (let index = 0; index < 3; index++) {
+        music.playTone(739.99, music.beat(BeatFraction.Half))
+        music.playTone(493.88, music.beat(BeatFraction.Half))
+    }
+    for (let index = 0; index < 2; index++) {
+        music.playTone(739.99, music.beat(BeatFraction.Half))
+        music.playTone(466.16, music.beat(BeatFraction.Half))
+    }
+    music.playTone(783.99, music.beat(BeatFraction.Whole))
+    for (let index = 0; index < 2; index++) {
+        music.playTone(739.99, music.beat(BeatFraction.Half))
+        music.playTone(587.33, music.beat(BeatFraction.Half))
+    }
+    music.playTone(659.25, music.beat(BeatFraction.Half))
+    music.playTone(739.99, music.beat(BeatFraction.Half))
+    music.playTone(659.25, music.beat(BeatFraction.Whole))
+    music.playTone(587.33, music.beat(BeatFraction.Whole))
+    music.playTone(554.37, music.beat(BeatFraction.Whole))
+    pause(2000)
+    song = 2
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     playerIndex += 1
     music.footstep.play()
@@ -337,6 +436,93 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     music.footstep.play()
     move = 2
 })
+function KK_Aria () {
+    pause(2000)
+    music.setVolume(25)
+    music.setTempo(83)
+    music.playTone(493.88, music.beat(BeatFraction.Double))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Double))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Double))
+    music.rest(music.beat(BeatFraction.Whole))
+    music.playTone(196, music.beat(BeatFraction.Whole))
+    music.playTone(196, music.beat(BeatFraction.Double))
+    music.playTone(185, music.beat(BeatFraction.Breve))
+    music.playTone(293.66, music.beat(BeatFraction.Double))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(369.99, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Double))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Whole))
+    music.playTone(329.63, music.beat(BeatFraction.Whole))
+    music.playTone(329.63, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(466.16, music.beat(BeatFraction.Double))
+    music.playTone(493.88, music.beat(BeatFraction.Double))
+    music.playTone(587.33, music.beat(BeatFraction.Double))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(587.33, music.beat(BeatFraction.Double))
+    music.playTone(587.33, music.beat(BeatFraction.Half))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Half))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Double))
+    music.playTone(369.99, music.beat(BeatFraction.Double))
+    music.playTone(293.66, music.beat(BeatFraction.Double))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.playTone(369.99, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Double))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Whole))
+    music.playTone(329.63, music.beat(BeatFraction.Whole))
+    music.playTone(329.63, music.beat(BeatFraction.Half))
+    music.playTone(369.99, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(466.16, music.beat(BeatFraction.Double))
+    music.playTone(493.88, music.beat(BeatFraction.Whole))
+    music.playTone(587.33, music.beat(BeatFraction.Whole))
+    music.playTone(739.99, music.beat(BeatFraction.Whole))
+    music.playTone(659.25, music.beat(BeatFraction.Whole))
+    music.playTone(659.25, music.beat(BeatFraction.Half))
+    music.playTone(587.33, music.beat(BeatFraction.Half))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(587.33, music.beat(BeatFraction.Half))
+    music.playTone(493.88, music.beat(BeatFraction.Double))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(523.25, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Double))
+    music.playTone(369.99, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    music.playTone(392, music.beat(BeatFraction.Breve))
+    pause(2000)
+    song = 1
+}
 function delete1 () {
     for (let value of player1Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
@@ -386,19 +572,19 @@ function delete2 () {
     for (let value of player2Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
             value.setPosition(deleted2, 87)
-            info.player1.changeLifeBy(-1)
+            info.player2.changeLifeBy(-1)
             deleted2 += 5
         } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
             value.setPosition(deleted2, 87)
-            info.player1.changeLifeBy(-1)
+            info.player2.changeLifeBy(-1)
             deleted2 += 5
         } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
             value.setPosition(deleted2, 87)
-            info.player1.changeLifeBy(-1)
+            info.player2.changeLifeBy(-1)
             deleted2 += 5
         } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
             value.setPosition(deleted2, 87)
-            info.player1.changeLifeBy(-1)
+            info.player2.changeLifeBy(-1)
             deleted2 += 5
         }
     }
@@ -511,6 +697,7 @@ let player12: Sprite = null
 let player11: Sprite = null
 let blocked = false
 let move = 0
+let song = 0
 let player2Pieces: Sprite[] = []
 let currentPiece: Sprite = null
 let player1Pieces: Sprite[] = []
@@ -519,4 +706,13 @@ start()
 forever(function () {
     pieceSelect()
     blinkAction()
+})
+forever(function () {
+    if (song == 0) {
+        KK_Aria()
+    } else if (song == 1) {
+        Fallen_Down()
+    } else if (song == 2) {
+        Town_Hall()
+    }
 })
