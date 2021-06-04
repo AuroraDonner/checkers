@@ -1,6 +1,9 @@
 namespace SpriteKind {
     export const stationary = SpriteKind.create()
 }
+/**
+ * *****Do piece select out of list contents - reorder numbers in player lists then have player Index indicate which  piece to use (according to position in list)******
+ */
 function blinkAction () {
     if (team == 1) {
         for (let value of player1Pieces) {
@@ -88,13 +91,28 @@ function Town_Hall () {
 }
 // move token up and to the right
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    currentPiece.x += -10
-    currentPiece.y += -10
-    music.footstep.play()
-    move = 1
+    if (team == 1) {
+        for (let value of player1Pieces) {
+            if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                blocked = true
+            }
+        }
+    } else if (team == -1) {
+        for (let value of player2Pieces) {
+            if (currentPiece.x - 10 == value.x && currentPiece.y - 10 == value.y) {
+                blocked = true
+            }
+        }
+    }
+    if (blocked == false) {
+        currentPiece.x += -10
+        currentPiece.y += -10
+        music.footstep.play()
+        move = 1
+    }
+    blocked = false
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    blocked = false
     if (team == -1) {
         for (let value of player1Pieces) {
             if (currentPiece.x == value.x && currentPiece.y == value.y) {
@@ -262,33 +280,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
     music.footstep.play()
     switchPlayers()
+    blocked = false
 })
-function resetSprites () {
-    player11.destroy()
-    player12.destroy()
-    player13.destroy()
-    player14.destroy()
-    player15.destroy()
-    player16.destroy()
-    player17.destroy()
-    player18.destroy()
-    player19.destroy()
-    player110.destroy()
-    player111.destroy()
-    player112.destroy()
-    player21.destroy()
-    player22.destroy()
-    player23.destroy()
-    player24.destroy()
-    player25.destroy()
-    player26.destroy()
-    player27.destroy()
-    player28.destroy()
-    player29.destroy()
-    player210.destroy()
-    player211.destroy()
-    player212.destroy()
-}
 function Fallen_Down () {
     pause(4000)
     music.setVolume(15)
@@ -424,17 +417,49 @@ function setUpPlayer1 () {
 }
 // move token down and to the left
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    currentPiece.x += -10
-    currentPiece.y += 10
-    music.footstep.play()
-    move = 4
+    if (team == 1) {
+        for (let value of player1Pieces) {
+            if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                blocked = true
+            }
+        }
+    } else if (team == -1) {
+        for (let value of player2Pieces) {
+            if (currentPiece.x - 10 == value.x && currentPiece.y + 10 == value.y) {
+                blocked = true
+            }
+        }
+    }
+    if (blocked == false) {
+        currentPiece.x += -10
+        currentPiece.y += 10
+        music.footstep.play()
+        move = 4
+    }
+    blocked = false
 })
 // move token up and to the right
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    currentPiece.x += 10
-    currentPiece.y += -10
-    music.footstep.play()
-    move = 2
+    if (team == 1) {
+        for (let value of player1Pieces) {
+            if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                blocked = true
+            }
+        }
+    } else if (team == -1) {
+        for (let value of player2Pieces) {
+            if (currentPiece.x + 10 == value.x && currentPiece.y - 10 == value.y) {
+                blocked = true
+            }
+        }
+    }
+    if (blocked == false) {
+        currentPiece.x += 10
+        currentPiece.y += -10
+        music.footstep.play()
+        move = 2
+    }
+    blocked = false
 })
 function KK_Aria () {
     pause(2000)
@@ -521,72 +546,83 @@ function KK_Aria () {
     music.playTone(440, music.beat(BeatFraction.Whole))
     music.playTone(392, music.beat(BeatFraction.Breve))
     pause(2000)
-    song = 1
+    if (song != 1) {
+        song = 2
+    }
 }
 function delete1 () {
+    indexDelete1 = 0
     for (let value of player1Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted1, 37)
-            info.player1.changeLifeBy(-1)
-            deleted1 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted1, 37)
-            info.player1.changeLifeBy(-1)
-            deleted1 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted1, 37)
-            info.player1.changeLifeBy(-1)
-            deleted1 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted1, 37)
+            deletedP1 = []
+            value.destroy()
+            player1Pieces.removeAt(indexDelete1)
+            mySprite = sprites.create(assets.image`player1`, SpriteKind.Enemy)
+            mySprite.setPosition(deleted1, 37)
+            deletedP1.push(mySprite)
             info.player1.changeLifeBy(-1)
             deleted1 += 5
         }
+        indexDelete1 += 1
     }
 }
-// move token down and to the right
+// move token up and to the right
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    currentPiece.x += 10
-    currentPiece.y += 10
-    music.footstep.play()
-    move = 3
+    if (team == 1) {
+        for (let value of player1Pieces) {
+            if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                blocked = true
+            }
+        }
+    } else if (team == -1) {
+        for (let value of player2Pieces) {
+            if (currentPiece.x + 10 == value.x && currentPiece.y + 10 == value.y) {
+                blocked = true
+            }
+        }
+    }
+    if (blocked == false) {
+        currentPiece.x += 10
+        currentPiece.y += 10
+        music.footstep.play()
+        move = 3
+    }
+    blocked = false
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     game.showLongText("UP: Top-Left            RIGHT: Top-Right          DOWN: Bottom-Right LEFT: Bottom-Left", DialogLayout.Bottom)
     game.showLongText("A Button: Cycle through pieces (active is blinking blue)", DialogLayout.Bottom)
     game.showLongText("B Button: Switch players (if on/under other token, will attempt to take piece and jump; if not possible, will send token back to start of turn and switch player)", DialogLayout.Bottom)
 })
+controller.combos.attachCombo("URDLA", function () {
+    song = 1
+})
 info.player1.onLifeZero(function () {
     game.splash("Player 2 Wins!", "Press A to reset")
     effects.confetti.startScreenEffect(2000)
-    resetSprites()
+    destroySprites()
     start()
 })
 info.player2.onLifeZero(function () {
     game.splash("Player 1 Wins!", "Press A to reset")
     effects.confetti.startScreenEffect(2000)
-    resetSprites()
+    destroySprites()
     start()
 })
 function delete2 () {
+    indexDelete2 = 0
     for (let value of player2Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted2, 87)
-            info.player2.changeLifeBy(-1)
-            deleted2 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted2, 87)
-            info.player2.changeLifeBy(-1)
-            deleted2 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted2, 87)
-            info.player2.changeLifeBy(-1)
-            deleted2 += 5
-        } else if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            value.setPosition(deleted2, 87)
+            deletedP2 = []
+            value.destroy()
+            player2Pieces.removeAt(indexDelete2)
+            mySprite = sprites.create(assets.image`player2`, SpriteKind.Player)
+            mySprite.setPosition(deleted2, 37)
+            deletedP2.push(mySprite)
             info.player2.changeLifeBy(-1)
             deleted2 += 5
         }
+        indexDelete2 += 1
     }
 }
 function start () {
@@ -596,17 +632,43 @@ function start () {
     playerIndex = 0
     buttonBIndex = 0
     team = 1
-    deleted1 = 10
-    deleted2 = 10
+    deleted1 = 8
+    deleted2 = 8
     info.player1.setLife(12)
     info.player2.setLife(12)
-    game.splash("TOKENS!", "The New Checkers")
+    game.splash("TOKENS!", "A pass-and-play game")
     game.splash("Rules:", "(press menu for help)")
     game.showLongText("This is a game similar to checkers, player 1 (beige) will start the game by moving their piece diagonally. Unlike checkers, \"Tokens\" does not require your pieces to go only forward until \"kinged\" - you can move your tokens in any direction.", DialogLayout.Full)
     game.showLongText("Like checkers, your pieces will move diagonally on the black squares; on your turn this will be completed using the directional arrows (press menu when in the game to review directions and button functions).", DialogLayout.Full)
     game.showLongText("Pressing the A button will allow you to cycle through your pieces; don't worry if you went past your desired token, you can always loop back. When you have finished moving your piece one (1) square diagonally, press the B button to switch players.", DialogLayout.Full)
     game.showLongText("If you wish to capture another players' token, move your piece to the same square as the desired token, and provided there is an empty space behind it, you will take the piece (seen on the side) and jump one more space when B is pressed.", DialogLayout.Full)
     game.showLongText("Watch out though, if you try to jump over a token when there is no empty space behind, you will be sent back to your original spot and will forfeit your turn. Once one player has captured all of their opponents pieces, they have won the game.", DialogLayout.Full)
+}
+function destroySprites () {
+    player11.destroy()
+    player12.destroy()
+    player13.destroy()
+    player14.destroy()
+    player15.destroy()
+    player16.destroy()
+    player17.destroy()
+    player18.destroy()
+    player19.destroy()
+    player110.destroy()
+    player111.destroy()
+    player112.destroy()
+    player21.destroy()
+    player22.destroy()
+    player23.destroy()
+    player24.destroy()
+    player25.destroy()
+    player26.destroy()
+    player27.destroy()
+    player28.destroy()
+    player29.destroy()
+    player210.destroy()
+    player211.destroy()
+    player212.destroy()
 }
 function pieceSelect () {
     if (playerIndex == 0) {
@@ -669,20 +731,12 @@ function switchPlayers () {
 }
 let buttonBIndex = 0
 let deleted2 = 0
+let deletedP2: Sprite[] = []
+let indexDelete2 = 0
 let deleted1 = 0
-let playerIndex = 0
-let player212: Sprite = null
-let player211: Sprite = null
-let player210: Sprite = null
-let player29: Sprite = null
-let player28: Sprite = null
-let player27: Sprite = null
-let player26: Sprite = null
-let player25: Sprite = null
-let player24: Sprite = null
-let player23: Sprite = null
-let player22: Sprite = null
-let player21: Sprite = null
+let mySprite: Sprite = null
+let deletedP1: Sprite[] = []
+let indexDelete1 = 0
 let player112: Sprite = null
 let player111: Sprite = null
 let player110: Sprite = null
@@ -695,8 +749,21 @@ let player14: Sprite = null
 let player13: Sprite = null
 let player12: Sprite = null
 let player11: Sprite = null
-let blocked = false
+let player212: Sprite = null
+let player211: Sprite = null
+let player210: Sprite = null
+let player29: Sprite = null
+let player28: Sprite = null
+let player27: Sprite = null
+let player26: Sprite = null
+let player25: Sprite = null
+let player24: Sprite = null
+let player23: Sprite = null
+let player22: Sprite = null
+let player21: Sprite = null
+let playerIndex = 0
 let move = 0
+let blocked = false
 let song = 0
 let player2Pieces: Sprite[] = []
 let currentPiece: Sprite = null
