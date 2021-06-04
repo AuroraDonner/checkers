@@ -1,9 +1,6 @@
 namespace SpriteKind {
     export const stationary = SpriteKind.create()
 }
-/**
- * *****Do piece select out of list contents - reorder numbers in player lists then have player Index indicate which  piece to use (according to position in list)******
- */
 function blinkAction () {
     if (team == 1) {
         for (let value of player1Pieces) {
@@ -25,6 +22,7 @@ function blinkAction () {
         }
     }
 }
+// Song #2 (from animal crossing)
 function Town_Hall () {
     pause(2000)
     music.setVolume(25)
@@ -282,6 +280,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     switchPlayers()
     blocked = false
 })
+// Bonuis song (gets loud and annoying/out of place if in usual rotation of songs)
 function Fallen_Down () {
     pause(4000)
     music.setVolume(15)
@@ -327,93 +326,95 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     music.footstep.play()
     if (team == 1) {
         // return to beginning of rotation for player 1
-        if (playerIndex == 12) {
+        if (playerIndex == limit1) {
             playerIndex = 0
         }
     } else if (team == -1) {
         // return to beginning of player 2's pieces
-        if (playerIndex == 24) {
-            playerIndex = 12
+        if (playerIndex == limit2) {
+            playerIndex = 0
         }
     }
 })
+// sets image for each sprite, co-ords for each sprite, and adds to array of pieces belonging to set player
 function setUpPlayer2 () {
     player2Pieces = []
     player21 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player21.setPosition(85, 27)
-    player2Pieces.push(player21)
+    player2Pieces.unshift(player21)
     player22 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player22.setPosition(105, 27)
-    player2Pieces.push(player22)
+    player2Pieces.unshift(player22)
     player23 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player23.setPosition(125, 27)
-    player2Pieces.push(player23)
+    player2Pieces.unshift(player23)
     player24 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player24.setPosition(145, 27)
-    player2Pieces.push(player24)
+    player2Pieces.unshift(player24)
     player25 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player25.setPosition(75, 37)
-    player2Pieces.push(player25)
+    player2Pieces.unshift(player25)
     player26 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player26.setPosition(95, 37)
-    player2Pieces.push(player26)
+    player2Pieces.unshift(player26)
     player27 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player27.setPosition(115, 37)
-    player2Pieces.push(player27)
+    player2Pieces.unshift(player27)
     player28 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player28.setPosition(135, 37)
-    player2Pieces.push(player28)
+    player2Pieces.unshift(player28)
     player29 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player29.setPosition(85, 47)
-    player2Pieces.push(player29)
+    player2Pieces.unshift(player29)
     player210 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player210.setPosition(105, 47)
-    player2Pieces.push(player210)
+    player2Pieces.unshift(player210)
     player211 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player211.setPosition(125, 47)
-    player2Pieces.push(player211)
+    player2Pieces.unshift(player211)
     player212 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player212.setPosition(145, 47)
-    player2Pieces.push(player212)
+    player2Pieces.unshift(player212)
 }
+// sets image for each sprite, co-ords for each sprite, and adds to array of pieces belonging to set player
 function setUpPlayer1 () {
     player1Pieces = []
     player11 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player11.setPosition(75, 97)
-    player1Pieces.push(player11)
+    player1Pieces.unshift(player11)
     player12 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player12.setPosition(95, 97)
-    player1Pieces.push(player12)
+    player1Pieces.unshift(player12)
     player13 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player13.setPosition(115, 97)
-    player1Pieces.push(player13)
+    player1Pieces.unshift(player13)
     player14 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player14.setPosition(135, 97)
-    player1Pieces.push(player14)
+    player1Pieces.unshift(player14)
     player15 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player15.setPosition(85, 87)
-    player1Pieces.push(player15)
+    player1Pieces.unshift(player15)
     player16 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player16.setPosition(105, 87)
-    player1Pieces.push(player16)
+    player1Pieces.unshift(player16)
     player17 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player17.setPosition(125, 87)
-    player1Pieces.push(player17)
+    player1Pieces.unshift(player17)
     player18 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player18.setPosition(145, 87)
-    player1Pieces.push(player18)
+    player1Pieces.unshift(player18)
     player19 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player19.setPosition(75, 77)
-    player1Pieces.push(player19)
+    player1Pieces.unshift(player19)
     player110 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player110.setPosition(95, 77)
-    player1Pieces.push(player110)
+    player1Pieces.unshift(player110)
     player111 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player111.setPosition(115, 77)
-    player1Pieces.push(player111)
+    player1Pieces.unshift(player111)
     player112 = sprites.create(assets.image`player1`, SpriteKind.Player)
     player112.setPosition(135, 77)
-    player1Pieces.push(player112)
+    player1Pieces.unshift(player112)
 }
 // move token down and to the left
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -461,6 +462,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
     blocked = false
 })
+// Song #1 (from animal corssing)
 function KK_Aria () {
     pause(2000)
     music.setVolume(25)
@@ -550,18 +552,16 @@ function KK_Aria () {
         song = 2
     }
 }
+// removes piece from array (so not still a movable option), changes life counter
 function delete1 () {
     indexDelete1 = 0
     for (let value of player1Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            deletedP1 = []
-            value.destroy()
             player1Pieces.removeAt(indexDelete1)
-            mySprite = sprites.create(assets.image`player1`, SpriteKind.Enemy)
-            mySprite.setPosition(deleted1, 37)
-            deletedP1.push(mySprite)
+            value.setPosition(deleted1, 37)
             info.player1.changeLifeBy(-1)
             deleted1 += 5
+            limit1 += -1
         }
         indexDelete1 += 1
     }
@@ -598,42 +598,47 @@ controller.combos.attachCombo("URDLA", function () {
     song = 1
 })
 info.player1.onLifeZero(function () {
-    game.splash("Player 2 Wins!", "Press A to reset")
     effects.confetti.startScreenEffect(2000)
-    destroySprites()
-    start()
+    game.splash("Player 2 Wins!", "time (ms):" + game.runtime())
+    game.reset()
 })
 info.player2.onLifeZero(function () {
-    game.splash("Player 1 Wins!", "Press A to reset")
     effects.confetti.startScreenEffect(2000)
-    destroySprites()
-    start()
+    game.splash("Player 1 Wins!", "time (ms):" + game.runtime())
+    game.reset()
 })
+// removes piece from array (so not still a movable option), changes life counter
 function delete2 () {
     indexDelete2 = 0
     for (let value of player2Pieces) {
         if (currentPiece.x == value.x && currentPiece.y == value.y) {
-            deletedP2 = []
-            value.destroy()
             player2Pieces.removeAt(indexDelete2)
-            mySprite = sprites.create(assets.image`player2`, SpriteKind.Player)
-            mySprite.setPosition(deleted2, 37)
-            deletedP2.push(mySprite)
+            value.setPosition(deleted2, 87)
             info.player2.changeLifeBy(-1)
             deleted2 += 5
+            limit2 += -1
         }
         indexDelete2 += 1
     }
 }
+// basic setup
 function start () {
     scene.setBackgroundImage(assets.image`checkerBoard`)
     setUpPlayer1()
     setUpPlayer2()
+    // Determines active position in array of pieces per player
     playerIndex = 0
-    buttonBIndex = 0
+    // 1 = player 1 (white)
+    // -1 = player 2 (purple)
     team = 1
+    // where deleted tokens get co-ords from 
     deleted1 = 8
+    // where deleted tokens get co-ords from
     deleted2 = 8
+    // enables looping of pieces, chnages as array gets shorter
+    limit1 = 12
+    // enables looping of tokens, changes as size of array reduces
+    limit2 = 12
     info.player1.setLife(12)
     info.player2.setLife(12)
     game.splash("TOKENS!", "A pass-and-play game")
@@ -644,98 +649,21 @@ function start () {
     game.showLongText("If you wish to capture another players' token, move your piece to the same square as the desired token, and provided there is an empty space behind it, you will take the piece (seen on the side) and jump one more space when B is pressed.", DialogLayout.Full)
     game.showLongText("Watch out though, if you try to jump over a token when there is no empty space behind, you will be sent back to your original spot and will forfeit your turn. Once one player has captured all of their opponents pieces, they have won the game.", DialogLayout.Full)
 }
-function destroySprites () {
-    player11.destroy()
-    player12.destroy()
-    player13.destroy()
-    player14.destroy()
-    player15.destroy()
-    player16.destroy()
-    player17.destroy()
-    player18.destroy()
-    player19.destroy()
-    player110.destroy()
-    player111.destroy()
-    player112.destroy()
-    player21.destroy()
-    player22.destroy()
-    player23.destroy()
-    player24.destroy()
-    player25.destroy()
-    player26.destroy()
-    player27.destroy()
-    player28.destroy()
-    player29.destroy()
-    player210.destroy()
-    player211.destroy()
-    player212.destroy()
-}
 function pieceSelect () {
-    if (playerIndex == 0) {
-        currentPiece = player112
-    } else if (playerIndex == 1) {
-        currentPiece = player111
-    } else if (playerIndex == 2) {
-        currentPiece = player110
-    } else if (playerIndex == 3) {
-        currentPiece = player19
-    } else if (playerIndex == 4) {
-        currentPiece = player18
-    } else if (playerIndex == 5) {
-        currentPiece = player17
-    } else if (playerIndex == 6) {
-        currentPiece = player16
-    } else if (playerIndex == 7) {
-        currentPiece = player15
-    } else if (playerIndex == 8) {
-        currentPiece = player14
-    } else if (playerIndex == 9) {
-        currentPiece = player13
-    } else if (playerIndex == 10) {
-        currentPiece = player12
-    } else if (playerIndex == 11) {
-        currentPiece = player11
-    } else if (playerIndex == 12) {
-        currentPiece = player212
-    } else if (playerIndex == 13) {
-        currentPiece = player211
-    } else if (playerIndex == 14) {
-        currentPiece = player210
-    } else if (playerIndex == 15) {
-        currentPiece = player29
-    } else if (playerIndex == 16) {
-        currentPiece = player28
-    } else if (playerIndex == 17) {
-        currentPiece = player27
-    } else if (playerIndex == 18) {
-        currentPiece = player26
-    } else if (playerIndex == 19) {
-        currentPiece = player25
-    } else if (playerIndex == 20) {
-        currentPiece = player24
-    } else if (playerIndex == 21) {
-        currentPiece = player23
-    } else if (playerIndex == 22) {
-        currentPiece = player22
-    } else if (playerIndex == 23) {
-        currentPiece = player21
+    if (team == 1) {
+        currentPiece = player1Pieces[playerIndex]
+    } else if (team == -1) {
+        currentPiece = player2Pieces[playerIndex]
     }
 }
+// switches active player
 function switchPlayers () {
-    if (playerIndex <= 11) {
-        playerIndex = 12
-    } else if (playerIndex >= 12) {
-        playerIndex = 0
-    }
     team = team * -1
+    playerIndex = 0
 }
-let buttonBIndex = 0
 let deleted2 = 0
-let deletedP2: Sprite[] = []
 let indexDelete2 = 0
 let deleted1 = 0
-let mySprite: Sprite = null
-let deletedP1: Sprite[] = []
 let indexDelete1 = 0
 let player112: Sprite = null
 let player111: Sprite = null
@@ -761,6 +689,8 @@ let player24: Sprite = null
 let player23: Sprite = null
 let player22: Sprite = null
 let player21: Sprite = null
+let limit2 = 0
+let limit1 = 0
 let playerIndex = 0
 let move = 0
 let blocked = false
