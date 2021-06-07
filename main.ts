@@ -594,7 +594,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     game.showLongText("A Button: Cycle through pieces (active is blinking blue)", DialogLayout.Bottom)
     game.showLongText("B Button: Switch players (if on/under other token, will attempt to take piece and jump; if not possible, will send token back to start of turn and switch player)", DialogLayout.Bottom)
 })
-controller.combos.attachCombo("URDLA", function () {
+controller.combos.attachCombo("URDL", function () {
     song = 1
 })
 info.player1.onLifeZero(function () {
@@ -643,7 +643,7 @@ function start () {
     info.player2.setLife(12)
     game.splash("TOKENS!", "A pass-and-play game")
     game.splash("Rules:", "(press menu for help)")
-    game.showLongText("This is a game similar to checkers, player 1 (beige) will start the game by moving their piece diagonally. Unlike checkers, \"Tokens\" does not require your pieces to go only forward until \"kinged\" - you can move your tokens in any direction.", DialogLayout.Full)
+    game.showLongText("This is a game similar to checkers, player 1 (white) will start the game by moving their piece diagonally. Unlike checkers, \"Tokens\" does not require your pieces to go only forward until \"kinged\" - you can move your tokens in any direction.", DialogLayout.Full)
     game.showLongText("Like checkers, your pieces will move diagonally on the black squares; on your turn this will be completed using the directional arrows (press menu when in the game to review directions and button functions).", DialogLayout.Full)
     game.showLongText("Pressing the A button will allow you to cycle through your pieces; don't worry if you went past your desired token, you can always loop back. When you have finished moving your piece one (1) square diagonally, press the B button to switch players.", DialogLayout.Full)
     game.showLongText("If you wish to capture another players' token, move your piece to the same square as the desired token, and provided there is an empty space behind it, you will take the piece (seen on the side) and jump one more space when B is pressed.", DialogLayout.Full)
