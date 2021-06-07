@@ -339,42 +339,42 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 // sets image for each sprite, co-ords for each sprite, and adds to array of pieces belonging to set player
 function setUpPlayer2 () {
     player2Pieces = []
-    player21 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player21.setPosition(85, 27)
-    player2Pieces.unshift(player21)
-    player22 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player22.setPosition(105, 27)
-    player2Pieces.unshift(player22)
-    player23 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player23.setPosition(125, 27)
-    player2Pieces.unshift(player23)
     player24 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player24.setPosition(145, 27)
     player2Pieces.unshift(player24)
-    player25 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player25.setPosition(75, 37)
-    player2Pieces.unshift(player25)
-    player26 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player26.setPosition(95, 37)
-    player2Pieces.unshift(player26)
-    player27 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player27.setPosition(115, 37)
-    player2Pieces.unshift(player27)
+    player23 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player23.setPosition(125, 27)
+    player2Pieces.unshift(player23)
+    player22 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player22.setPosition(105, 27)
+    player2Pieces.unshift(player22)
+    player21 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player21.setPosition(85, 27)
+    player2Pieces.unshift(player21)
     player28 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player28.setPosition(135, 37)
     player2Pieces.unshift(player28)
-    player29 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player29.setPosition(85, 47)
-    player2Pieces.unshift(player29)
-    player210 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player210.setPosition(105, 47)
-    player2Pieces.unshift(player210)
-    player211 = sprites.create(assets.image`player2`, SpriteKind.Player)
-    player211.setPosition(125, 47)
-    player2Pieces.unshift(player211)
+    player27 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player27.setPosition(115, 37)
+    player2Pieces.unshift(player27)
+    player26 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player26.setPosition(95, 37)
+    player2Pieces.unshift(player26)
+    player25 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player25.setPosition(75, 37)
+    player2Pieces.unshift(player25)
     player212 = sprites.create(assets.image`player2`, SpriteKind.Player)
     player212.setPosition(145, 47)
     player2Pieces.unshift(player212)
+    player211 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player211.setPosition(125, 47)
+    player2Pieces.unshift(player211)
+    player210 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player210.setPosition(105, 47)
+    player2Pieces.unshift(player210)
+    player29 = sprites.create(assets.image`player2`, SpriteKind.Player)
+    player29.setPosition(85, 47)
+    player2Pieces.unshift(player29)
 }
 // sets image for each sprite, co-ords for each sprite, and adds to array of pieces belonging to set player
 function setUpPlayer1 () {
@@ -598,12 +598,12 @@ controller.combos.attachCombo("URDL", function () {
     song = 1
 })
 info.player1.onLifeZero(function () {
-    effects.confetti.startScreenEffect(2000)
+    effects.confetti.startScreenEffect()
     game.splash("Player 2 Wins!", "time (ms):" + game.runtime())
     game.reset()
 })
 info.player2.onLifeZero(function () {
-    effects.confetti.startScreenEffect(2000)
+    effects.confetti.startScreenEffect()
     game.splash("Player 1 Wins!", "time (ms):" + game.runtime())
     game.reset()
 })
@@ -677,18 +677,18 @@ let player14: Sprite = null
 let player13: Sprite = null
 let player12: Sprite = null
 let player11: Sprite = null
-let player212: Sprite = null
-let player211: Sprite = null
-let player210: Sprite = null
 let player29: Sprite = null
-let player28: Sprite = null
-let player27: Sprite = null
-let player26: Sprite = null
+let player210: Sprite = null
+let player211: Sprite = null
+let player212: Sprite = null
 let player25: Sprite = null
-let player24: Sprite = null
-let player23: Sprite = null
-let player22: Sprite = null
+let player26: Sprite = null
+let player27: Sprite = null
+let player28: Sprite = null
 let player21: Sprite = null
+let player22: Sprite = null
+let player23: Sprite = null
+let player24: Sprite = null
 let limit2 = 0
 let limit1 = 0
 let playerIndex = 0
