@@ -102,7 +102,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
             }
         }
     }
-    if (blocked == false) {
+    if (blocked == false && (currentPiece.x >= 85 && currentPiece.y >= 37)) {
         currentPiece.x += -10
         currentPiece.y += -10
         music.footstep.play()
@@ -431,7 +431,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
             }
         }
     }
-    if (blocked == false) {
+    if (blocked == false && (currentPiece.x >= 85 && currentPiece.y <= 87)) {
         currentPiece.x += -10
         currentPiece.y += 10
         music.footstep.play()
@@ -454,7 +454,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
             }
         }
     }
-    if (blocked == false) {
+    if (blocked == false && (currentPiece.x <= 135 && currentPiece.y >= 37)) {
         currentPiece.x += 10
         currentPiece.y += -10
         music.footstep.play()
@@ -581,7 +581,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
             }
         }
     }
-    if (blocked == false) {
+    if (blocked == false && (currentPiece.x <= 135 && currentPiece.y <= 87)) {
         currentPiece.x += 10
         currentPiece.y += 10
         music.footstep.play()
